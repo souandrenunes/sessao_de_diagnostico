@@ -8,17 +8,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        /* Camada invisível de segurança para cliques acidentais na barra do Drive */
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 45px;
-            z-index: 10;
-            background: transparent;
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
@@ -30,26 +19,25 @@
 
     <!-- HERO SECTION & VSL -->
     <section class="relative bg-white pt-12 pb-16 md:py-20 border-b border-slate-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-8">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
                 <span class="inline-block bg-slate-100 text-slate-800 text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full mb-4">
                     Diagnóstico Estratégico Individual
                 </span>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-                    A sua competência clínica não vai transformar seu consultório em um negócio lucrativo sozinha.
+                
+                <!-- NOVA COPY INSERIDA AQUI -->
+                <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto mb-8">
+                    Entenda a estrutura que vai fazer você, <span class="text-emerald-600">psicólogo e terapeuta</span>, conseguir de <span class="underline decoration-emerald-500 decoration-4">10 a 30 potenciais pacientes por semana</span> direto no seu WhatsApp.
                 </h1>
-                <p class="text-xl md:text-2xl font-medium text-slate-600 leading-snug mb-6">
-                    Eu ajudo psicólogos e terapeutas a estruturarem a base de atração da sua clínica para receberem de <strong class="text-emerald-600">10 a 30 potenciais pacientes por semana</strong> direto no WhatsApp, prontos para conversar sobre seu atendimento. O fim da dependência de indicações e o início de um negócio previsível.
-                </p>
-                <p class="text-xs md:text-sm font-bold uppercase tracking-widest text-emerald-600 animate-pulse mb-2">
+                
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-8 animate-pulse">
                     Aperte o play e entenda o método ↓
                 </p>
             </div>
 
-            <!-- VSL PLAYER EMBED SEM CORTES -->
-            <div class="max-w-4xl mx-auto mb-10 shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-900 bg-black relative aspect-video">
-                <div class="video-overlay"></div>
-                <iframe src="https://drive.google.com/file/d/1Qu9x79r3F3mv6V5uGpI2pzg9zgNF2QiF/preview" class="w-full h-full object-contain" allow="autoplay"></iframe>
+            <!-- VSL - PADRÃO OFICIAL DO GOOGLE DRIVE -->
+            <div class="mb-10 shadow-2xl rounded-2xl overflow-hidden border border-slate-200 bg-black aspect-video">
+                <iframe src="https://drive.google.com/file/d/1Qu9x79r3F3mv6V5uGpI2pzg9zgNF2QiF/preview" class="w-full h-full" allow="autoplay" allowfullscreen></iframe>
             </div>
 
             <div class="text-center mt-8">
@@ -60,7 +48,7 @@
         </div>
     </section>
 
-    <!-- SOCIAL PROOF (DEPOIMENTOS INTACTOS S/ CORTE) -->
+    <!-- SOCIAL PROOF (DEPOIMENTOS - EM EMBED PADRÃO) -->
     <section class="py-16 bg-slate-50 border-b border-slate-200">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-2">
@@ -69,15 +57,13 @@
             <p class="text-center text-slate-600 mb-10">Veja o que acontece quando você aplica estratégia no seu consultório:</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-sm md:max-w-2xl mx-auto mb-10">
-                <!-- Depoimento 1 - Proporção de Tela Cheia Garantida -->
-                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black relative aspect-[9/16]">
-                    <div class="video-overlay"></div>
-                    <iframe src="https://drive.google.com/file/d/17JdTjg3911qcc6Gr7-oxQS1gIPPTXGQt/preview" class="w-full h-full object-contain"></iframe>
+                <!-- Depoimento 1 -->
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-black aspect-[9/16]">
+                    <iframe src="https://drive.google.com/file/d/17JdTjg3911qcc6Gr7-oxQS1gIPPTXGQt/preview" class="w-full h-full" allowfullscreen></iframe>
                 </div>
-                <!-- Depoimento 2 - Proporção de Tela Cheia Garantida -->
-                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-black relative aspect-[9/16]">
-                    <div class="video-overlay"></div>
-                    <iframe src="https://drive.google.com/file/d/1l_1i9_V6Laf_3DQKVKc5Rvtq7kIFULCF/preview" class="w-full h-full object-contain"></iframe>
+                <!-- Depoimento 2 -->
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-black aspect-[9/16]">
+                    <iframe src="https://drive.google.com/file/d/1l_1i9_V6Laf_3DQKVKc5Rvtq7kIFULCF/preview" class="w-full h-full" allowfullscreen></iframe>
                 </div>
             </div>
 
@@ -93,7 +79,7 @@
     <section class="py-16 md:py-24 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
-                <div class="max-w-sm mx-auto md:max-w-none w-full shadow-2xl rounded-2xl overflow-hidden border-4 border-slate-50">
+                <div class="max-w-sm mx-auto md:max-w-none w-full shadow-2xl rounded-2xl overflow-hidden border border-slate-100">
                     <img src="eu.jpg" alt="André Nunes" class="w-full h-auto object-cover aspect-[3/4]">
                 </div>
                 <div class="space-y-6">
@@ -102,8 +88,8 @@
                         De vendedor de trufas na rua a estrategista de negócios para clínicas e consultórios.
                     </h2>
                     <div class="text-base md:text-lg text-slate-600 space-y-4 leading-relaxed">
-                        <p>Minha jornada no mercado digital começou em outubro de 2020. Mas antes de gerenciar mais de 2 milhões de reais em tráfego e participar de lançamentos de grandes Players do mercado, minha realidade era outra: no final de 2019, eu vendia trufas na rua para conseguir pagar a passagem de ônibus e o xerox da faculdade.</p>
-                        <p>Eu aprendi na pele que você pode ter o melhor conhecimento do mundo, mas se não souber se posicionar para o público certo, seu consultório não se sustenta. A minha grande virada de chave aconteceu quando eu fechei um cliente de R$ 4.500 e, logo em seguida, ele cancelou. Ali eu entendi o peso da <strong>falta de previsibilidade</strong>. Eu não tinha um negócio previsível; eu vivia no susto.</p>
+                        <p>Minha jornada no mercado digital começou em outubro de 2020. Mas antes de gerenciar mais de 2 milhões de reais em tráfego e participar de lançamentos de grandes Players do mercado, minha reality era outra: no final de 2019, eu vendia trufas na rua para conseguir pagar a passagem de ônibus e o xerox da faculdade.</p>
+                        <p>Eu aprendi na pele que você pode tener o melhor knowledge do mundo, mas se não souber se posicionar para o público certo, seu consultório não se sustenta. A minha grande virada de chave aconteceu quando eu fechei um cliente de R$ 4.500 e, logo em seguida, ele cancelou. Ali eu entendi o peso da <strong>falta de previsibilidade</strong>. Eu não tinha um negócio previsível; eu vivia no susto.</p>
                         
                         <div class="border-l-4 border-emerald-500 pl-5 py-2 my-6 bg-slate-50 rounded-r-xl">
                             <p class="font-bold text-slate-900 italic">
@@ -206,7 +192,7 @@
         </div>
     </section>
 
-    <!-- ABA DA OFERTA UNIFICADA (OFERTA + ENTREGÁVEIS NO MESMO BLOCO PREMUM) -->
+    <!-- ABA DA OFERTA UNIFICADA -->
     <section id="oferta-unificada" class="py-16 md:py-24 bg-white border-t border-slate-100 scroll-mt-10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -215,10 +201,8 @@
                 <p class="text-slate-600 text-lg">Abaixo está tudo o que está incluso no seu acesso à Sessão de Diagnóstico Estratégico Individual.</p>
             </div>
 
-            <!-- CONTAINER DE PRODUTO ÚNICO DIGITAL -->
             <div class="bg-slate-950 text-white rounded-3xl shadow-2xl border border-slate-800 overflow-hidden">
                 
-                <!-- PARTE superior: ELEVAÇÃO DE CONSCIÊNCIA / NARRATIVA DA ANOMALIA -->
                 <div class="p-8 md:p-12 bg-slate-900 border-b border-slate-800/80">
                     <span class="bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">
                         Proposta Exclusiva André Nunes
@@ -229,10 +213,8 @@
                     </p>
                 </div>
 
-                <!-- CORPO DO PRODUTO: ENTREGÁVEIS INTEGRADOS -->
                 <div class="p-8 md:p-12 space-y-10">
                     
-                    <!-- PASSO 1 -->
                     <div class="flex gap-4 items-start pb-6 border-b border-slate-800/60">
                         <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">1</div>
                         <div>
@@ -241,7 +223,6 @@
                         </div>
                     </div>
 
-                    <!-- PASSO 2 -->
                     <div class="flex gap-4 items-start pb-6 border-b border-slate-800/60">
                         <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">2</div>
                         <div>
@@ -250,7 +231,6 @@
                         </div>
                     </div>
 
-                    <!-- PASSO 3 (KIT DE VIDEOAULAS) -->
                     <div class="flex gap-4 items-start pb-6">
                         <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">3</div>
                         <div class="w-full">
@@ -269,18 +249,16 @@
                                 <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">9.</span> Roteiro de Fechamento de Contratos de Sessão</li>
                             </ul>
 
-                            <!-- BÔNUS INTEGRADO NA MESMA CARCAÇA -->
                             <div class="mt-6 pt-6 border-t border-slate-800 flex items-start gap-3 bg-slate-900/50 p-4 rounded-xl border border-slate-800">
                                 <span class="bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shrink-0">Bônus Extra</span>
                                 <div>
-                                    <h5 class="font-bold text-white text-sm">10. Aulão: Como saber se meu investimento está indo bem + (Manual do Acompanhamento)</h5>
-                                    <p class="text-slate-400 text-xs mt-1">Um guia prático e analítico para você controlar e acompanhar as métricas financeiras do seu negócio com precisão absoluta.</p>
+                                    <h5 class="font-bold text-white text-sm">10. Treinamento de Métricas de Marketing: Como saber se seu investimento está valendo a pena</h5>
+                                    <p class="text-slate-400 text-xs mt-1">Vou te ensinar a ler os números do seu marketing de forma simples. Você vai descobrir exatamente quanto custa cada paciente que chega e se o dinheiro investido está trazendo lucro real para o caixa da clínica.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- PREÇO, ANCORAGEM E CHAMADA FINAL (FIM DA SEÇÃO DO PRODUTO) -->
                     <div class="pt-8 border-t border-slate-800 text-center relative z-10">
                         <div class="mb-6">
                             <p class="text-xs text-slate-400 uppercase tracking-widest">Valor de Tabela da Consultoria:</p>
@@ -288,12 +266,10 @@
                             <p class="text-emerald-400 text-sm font-semibold">Toque abaixo para falar comigo e liberar sua condição de desconto:</p>
                         </div>
                         
-                        <!-- BOTÃO WHATSAPP EXCLUSIVO -->
                         <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20meu%20desconto." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-base md:text-lg font-extrabold uppercase tracking-widest px-8 py-5 rounded-xl shadow-[0_0_40px_rgba(16,185,129,0.3)] transition-all transform hover:scale-105 mb-8">
                             🟢 Fale agora no WhatsApp para receber seu desconto
                         </a>
 
-                        <!-- GARANTIA RISCO ZERO DENTRO DO BLOCO -->
                         <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-left flex flex-col sm:flex-row items-center gap-4">
                             <div class="bg-white/10 text-emerald-400 rounded-full p-2.5 shrink-0">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -314,7 +290,7 @@
         </div>
     </section>
 
-    <!-- FAQ SECTION (MOVIDO PARA O FINAL ABSOLUTO DA PÁGINA) -->
+    <!-- FAQ SECTION -->
     <section class="py-16 bg-slate-50 border-t border-slate-200">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-8">Dúvidas Frequentes</h2>
