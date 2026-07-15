@@ -3,337 +3,534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sessão de Diagnóstico Estratégico - André Nunes</title>
+    <title>Marketing para Psi e Terapeutas</title>
+    <!-- Tailwind CSS para design de alto padrão -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050B1A; /* Fundo azul profundo e luxuoso */
+        }
+        
+        /* Suavização de renderização nas laterais */
+        .reveal-item {
+            opacity: 0.05;
+            transform: translateY(15px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Círculos P, A, V */
+        .step-circle {
+            transform: scale(0.85);
+            background-color: #0F1A36;
+            border: 3px solid #1E294B;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .step-circle.active {
+            transform: scale(1.1);
+            background-color: #00B4D8;
+            border-color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(0, 180, 216, 0.7);
+        }
+
+        /* Baú de Ouro Final - Container */
+        .gold-circle {
+            transform: scale(0.85);
+            background-color: #1A1608;
+            border: 3px solid #3A2F0F;
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .gold-circle.active {
+            transform: scale(1.15);
+            background: radial-gradient(circle, #F59E0B 0%, #B45309 100%);
+            border-color: #FFE082;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.9);
+            animation: pulse-gold 2s infinite alternate;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
+            100% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.9); }
+        }
+
+        /* Animação física de abertura da tampa do baú */
+        .chest-lid {
+            transform-origin: bottom center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gold-circle.active .chest-lid {
+            transform: translateY(-4px) rotateX(-35deg) scaleY(0.85);
+        }
+
+        /* Classe de partículas (Apenas Moedas de Ouro em Câmera Lenta) */
+        .gold-coin {
+            position: absolute;
+            pointer-events: none;
+            z-index: 9999;
+            filter: drop-shadow(0 3px 6px rgba(251, 191, 36, 0.6));
+            animation: shoot-gold-money 4.2s cubic-bezier(0.1, 0.8, 0.25, 1) forwards; /* Velocidade reduzida para efeito suave */
+        }
+
+        /* Física ultra suave e lenta de dispersão de moedas */
+        @keyframes shoot-gold-money {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1) rotate(var(--r));
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
+<body class="text-slate-100 overflow-x-hidden selection:bg-[#00B4D8]/30">
 
-    <!-- BARRA DE URGÊNCIA -->
-    <div class="bg-amber-500 text-slate-950 text-center py-2 px-4 text-xs md:text-sm font-bold tracking-wide sticky top-0 z-50 shadow-sm">
-        ⚠️ Restam apenas <span class="underline">4 vagas</span> com condição especial de liberação para esta semana.
-    </div>
-
-    <!-- HERO SECTION & VSL -->
-    <section class="relative bg-white pt-12 pb-16 md:py-20 border-b border-slate-100">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <span class="inline-block bg-slate-100 text-slate-800 text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full mb-4">
-                    Diagnóstico Estratégico Individual
-                </span>
-                
-                <!-- NOVA COPY INSERIDA AQUI -->
-                <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto mb-8">
-                    Entenda a estrutura que vai fazer você, <span class="text-emerald-600">psicólogo e terapeuta</span>, conseguir de <span class="underline decoration-emerald-500 decoration-4">10 a 30 potenciais pacientes por semana</span> direto no seu WhatsApp.
-                </h1>
-                
-                <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mt-8 animate-pulse">
-                    Aperte o play e entenda o método ↓
-                </p>
-            </div>
-
-            <!-- VSL - PADRÃO OFICIAL DO GOOGLE DRIVE -->
-            <div class="mb-10 shadow-2xl rounded-2xl overflow-hidden border border-slate-200 bg-black aspect-video">
-                <iframe src="https://drive.google.com/file/d/1Qu9x79r3F3mv6V5uGpI2pzg9zgNF2QiF/preview" class="w-full h-full" allow="autoplay" allowfullscreen></iframe>
-            </div>
-
-            <div class="text-center mt-8">
-                <a href="#oferta-unificada" class="inline-block w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-lg font-bold uppercase tracking-wider px-8 py-5 rounded-xl shadow-[0_8px_30px_rgb(16,185,129,0.3)] transition-all transform hover:-translate-y-1 text-center">
-                    Garantir Vaga com Desconto Especial
-                </a>
+    <!-- HERO SECTION -->
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative bg-gradient-to-b from-[#050B1A] to-[#0A122C]">
+        <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-4xl z-10">
+            <span class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider text-[#00B4D8] bg-[#00B4D8]/10 uppercase mb-6 inline-block">
+                Método de Atração de Clientes
+            </span>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight px-2">
+                Marketing para <span class="text-[#00B4D8]">Psi e Terapeutas</span>
+            </h1>
+            <p class="text-base md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed mb-12 px-4">
+                Entenda como funciona esse sistema e como você vai conseguir novos <strong class="text-white font-semibold">Pacientes todos os meses</strong>, sem precisar aparecer no Instagram.
+            </p>
+            
+            <div class="animate-bounce flex flex-col items-center gap-2 cursor-pointer" onclick="scrollToSystem()">
+                <span class="text-[10px] text-slate-400 tracking-widest uppercase">Role ou toque para iniciar o sistema</span>
+                <svg class="w-5 h-5 text-[#00B4D8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- SOCIAL PROOF (DEPOIMENTOS - EM EMBED PADRÃO) -->
-    <section class="py-16 bg-slate-50 border-b border-slate-200">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-2">
-                Eles pararam de "esperar indicações".
-            </h2>
-            <p class="text-center text-slate-600 mb-10">Veja o que acontece quando você aplica estratégia no seu consultório:</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-sm md:max-w-2xl mx-auto mb-10">
-                <!-- Depoimento 1 -->
-                <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-black aspect-[9/16]">
-                    <iframe src="https://drive.google.com/file/d/17JdTjg3911qcc6Gr7-oxQS1gIPPTXGQt/preview" class="w-full h-full" allowfullscreen></iframe>
-                </div>
-                <!-- Depoimento 2 -->
-                <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-black aspect-[9/16]">
-                    <iframe src="https://drive.google.com/file/d/1l_1i9_V6Laf_3DQKVKc5Rvtq7kIFULCF/preview" class="w-full h-full" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="text-center">
-                <a href="#oferta-unificada" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 uppercase tracking-wider transition-colors">
-                    Ver Condição Especial da Sessão ↓
-                </a>
-            </div>
+    <!-- FUNIL CENTRALIZADO -->
+    <section id="sistema" class="py-24 px-2 sm:px-4 relative max-w-5xl mx-auto min-h-screen overflow-visible">
+        
+        <!-- LINHA CENTRAL DINÂMICA -->
+        <div class="absolute left-1/2 top-24 bottom-24 w-[3px] bg-slate-800/40 -translate-x-1/2 z-0 rounded-full">
+            <div class="line-fill w-full h-0 bg-gradient-to-b from-[#00B4D8] via-[#0077B6] to-[#F59E0B] rounded-full transition-all duration-75 ease-out"></div>
         </div>
-    </section>
 
-    <!-- HISTÓRIA / POSICIONAMENTO -->
-    <section class="py-16 md:py-24 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
-                <div class="max-w-sm mx-auto md:max-w-none w-full shadow-2xl rounded-2xl overflow-hidden border border-slate-100">
-                    <img src="eu.jpg" alt="André Nunes" class="w-full h-auto object-cover aspect-[3/4]">
-                </div>
-                <div class="space-y-6">
-                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block">Muito Prazer, André Nunes</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-                        De vendedor de trufas na rua a estrategista de negócios para clínicas e consultórios.
-                    </h2>
-                    <div class="text-base md:text-lg text-slate-600 space-y-4 leading-relaxed">
-                        <p>Minha jornada no mercado digital começou em outubro de 2020. Mas antes de gerenciar mais de 2 milhões de reais em tráfego e participar de lançamentos de grandes Players do mercado, minha reality era outra: no final de 2019, eu vendia trufas na rua para conseguir pagar a passagem de ônibus e o xerox da faculdade.</p>
-                        <p>Eu aprendi na pele que você pode tener o melhor knowledge do mundo, mas se não souber se posicionar para o público certo, seu consultório não se sustenta. A minha grande virada de chave aconteceu quando eu fechei um cliente de R$ 4.500 e, logo em seguida, ele cancelou. Ali eu entendi o peso da <strong>falta de previsibilidade</strong>. Eu não tinha um negócio previsível; eu vivia no susto.</p>
-                        
-                        <div class="border-l-4 border-emerald-500 pl-5 py-2 my-6 bg-slate-50 rounded-r-xl">
-                            <p class="font-bold text-slate-900 italic">
-                                Foi aí que aprendi a lição que dita tudo o que faço hoje: Posicionamento é Venda.
-                            </p>
-                        </div>
-                        
-                        <p>Foi criando o <strong>Método Zero ao Consultório</strong> que eu mudei o jogo. Hoje, meu trabalho é pegar essa mesma clareza comercial e instalar no seu consultório. Para que você pare de apenas "esperar o telefone tocar" e passe a liderar um negócio estruturado, onde o paciente certo percebe o seu valor antes mesmo de dar um "oi" no WhatsApp.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="space-y-32 md:space-y-40 relative z-10 timeline-container overflow-visible">
             
-            <div class="text-center">
-                <a href="#oferta-unificada" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 uppercase tracking-wider transition-colors">
-                    Ver Condição Especial da Sessão ↓
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- PARA QUEM É -->
-    <section class="py-16 md:py-24 bg-slate-900 text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Para quem é</h2>
-            <p class="text-center text-slate-400 mb-12 text-lg">Psicólogos e terapeutas que decidiram parar de tratar seus consultórios de forma informal e querem construir uma estrutura de atendimento com faturamento previsível.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50">
-                    <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>
-                    <div>
-                        <h4 class="font-bold text-white mb-1">Ansiedade com o fim do mês</h4>
-                        <p class="text-slate-300 text-sm">Você tem uma competência clínica excelente, mas passa os dias tenso porque sua agenda depende de indicações — e indicações são imprevisíveis.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50">
-                    <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg></div>
-                    <div>
-                        <h4 class="font-bold text-white mb-1">Desconexão de Valor</h4>
-                        <p class="text-slate-300 text-sm">Você percebe que as pessoas até chegam a perguntar o seu preço, mas somem logo em seguida porque ainda não entenderam o real valor do seu acompanhamento.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50">
-                    <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></div>
-                    <div>
-                        <h4 class="font-bold text-white mb-1">Falta de Processo Claro</h4>
-                        <p class="text-slate-300 text-sm">Você quer construir a estrutura certa para atrair pacientes particulares toda semana, mas se sente perdido sobre qual passo dar primeiro para organizar o consultório como um negócio.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-5 bg-slate-800/80 rounded-xl border border-slate-700/50">
-                    <div class="text-emerald-400 mt-1 shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
-                    <div>
-                        <h4 class="font-bold text-white mb-1">Desejo de Escala</h4>
-                        <p class="text-slate-300 text-sm">Você quer parar de trocar apenas horas por dinheiro e deseja ter um fluxo consistente de contatos chegando para poder escolher quem atender e quanto cobrar.</p>
-                    </div>
+            <!-- 1. CÍRCULO P -->
+            <div class="timeline-step flex flex-col items-center relative">
+                <div data-step="1" class="step-circle w-14 h-14 md:w-18 md:h-18 rounded-full flex items-center justify-center text-xl md:text-2xl font-black text-white shadow-lg z-20">
+                    P
                 </div>
             </div>
 
-            <div class="text-center">
-                <a href="#oferta-unificada" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-400 hover:text-emerald-300 uppercase tracking-wider transition-colors">
-                    Ver Condição Especial da Sessão ↓
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- O MÉTODO -->
-    <section class="py-16 md:py-24 bg-slate-50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Apresento o Método Zero ao Consultório</h2>
-                <p class="text-slate-600 text-lg">Um sistema estruturado focado em transformar seu conhecimento clínico em uma estrutura de negócio previsível:</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <!-- PILAR 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 group">
-                    <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 1</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Posicionamento Estratégico</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Ajustamos sua mensagem, Instagram e Google Meu Negócio para que o mercado entenda exatamente qual dor você resolve e por que você não é "só mais um profissional".</p>
+            <!-- INTERVALO 1: ENTRE P E A -->
+            <div class="grid grid-cols-2 gap-x-2 sm:gap-x-8 md:gap-x-16 w-full relative min-h-[120px] items-center">
+                <!-- Lado Esquerdo -->
+                <div class="reveal-item text-right pr-2 sm:pr-8 md:pr-12 flex flex-col justify-center items-end">
+                    <ul class="space-y-1.5 text-slate-300 text-[11px] sm:text-xs md:text-sm font-medium">
+                        <li>Google Meu Negócio <span class="text-[#00B4D8]">●</span></li>
+                        <li>Site Profissional <span class="text-[#00B4D8]">●</span></li>
+                        <li>Oferta Irrecusável <span class="text-[#00B4D8]">●</span></li>
+                        <li>Avatar e Nicho <span class="text-[#00B4D8]">●</span></li>
+                    </ul>
                 </div>
-                <!-- PILAR 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 group">
-                    <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 2</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Anúncios Online</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Ativamos o motor de atração. Criamos campanhas direcionadas para trazer as pessoas certas, que precisam da sua ajuda, direto para seu WhatsApp.</p>
-                </div>
-                <!-- PILAR 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 group">
-                    <span class="inline-block bg-slate-100 text-slate-800 group-hover:bg-emerald-100 group-hover:text-emerald-800 transition-colors text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">Pilar 3</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Comercial e Vendas</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">O treinamento prático para você conduzir conversas éticas no WhatsApp e dominar a Reunião de Diagnóstico, convertendo contatos em pacientes pagantes sem parecer chato.</p>
+                <!-- Lado Direito -->
+                <div class="reveal-item pl-2 sm:pl-8 md:pl-12 flex flex-col justify-center items-start">
+                    <h3 class="text-sm sm:text-lg md:text-3xl font-black text-[#00B4D8] tracking-wide uppercase break-words leading-tight">
+                        Posicionamento
+                    </h3>
+                    <p class="text-[9px] sm:text-xs text-slate-400 mt-0.5 max-w-[120px] sm:max-w-xs">Sua vitrine profissional de autoridade.</p>
                 </div>
             </div>
 
-            <div class="text-center">
-                <a href="#oferta-unificada" class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 uppercase tracking-wider transition-colors">
-                    Ver Condição Especial da Sessão ↓
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABA DA OFERTA UNIFICADA -->
-    <section id="oferta-unificada" class="py-16 md:py-24 bg-white border-t border-slate-100 scroll-mt-10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Seu Plano de Aceleração Completo</h2>
-                <p class="text-slate-600 text-lg">Abaixo está tudo o que está incluso no seu acesso à Sessão de Diagnóstico Estratégico Individual.</p>
+            <!-- 2. CÍRCULO A -->
+            <div class="timeline-step flex flex-col items-center relative">
+                <div data-step="2" class="step-circle w-14 h-14 md:w-18 md:h-18 rounded-full flex items-center justify-center text-xl md:text-2xl font-black text-white shadow-lg z-20">
+                    A
+                </div>
             </div>
 
-            <div class="bg-slate-950 text-white rounded-3xl shadow-2xl border border-slate-800 overflow-hidden">
-                
-                <div class="p-8 md:p-12 bg-slate-900 border-b border-slate-800/80">
-                    <span class="bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 inline-block">
-                        Proposta Exclusiva André Nunes
-                    </span>
-                    <h3 class="text-2xl md:text-3xl font-extrabold mb-4 text-white">Por que estou entregando tanto por um valor tão abaixo do mercado?</h3>
-                    <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                        Se você procurar por aí, vai encontrar mentorias de negócios ou agências cobrando de R$ 3.000 a R$ 5.000 para te entregar metade disso. Eu sei disso porque venho desse mercado. Mas eu decidi criar uma <strong class="text-emerald-400 font-semibold">oferta que não existe em nenhum outro lugar</strong>: eu te dou o direcionamento individual ao vivo e te entrego todo o kit de ferramentas e scripts prontos para você executar imediatamente. Faço isso porque sei que, assim que você colher os primeiros resultados, vai querer dar os próximos passos comigo. É uma parceria ganha-ganha.
+            <!-- INTERVALO 2: ENTRE A E V -->
+            <div class="grid grid-cols-2 gap-x-2 sm:gap-x-8 md:gap-x-16 w-full relative min-h-[120px] items-center">
+                <!-- Lado Esquerdo -->
+                <div class="reveal-item text-right pr-2 sm:pr-8 md:pr-12 flex flex-col justify-center items-end">
+                    <p class="text-slate-300 text-[11px] sm:text-xs md:text-sm max-w-[140px] sm:max-w-xs font-medium leading-relaxed">
+                        Anúncios on-line direcionados para a venda direta de consultas.
                     </p>
                 </div>
+                <!-- Lado Direito -->
+                <div class="reveal-item pl-2 sm:pl-8 md:pl-12 flex flex-col justify-center items-start">
+                    <h3 class="text-sm sm:text-lg md:text-3xl font-black text-[#00B4D8] tracking-wide uppercase leading-tight">
+                        Anúncios
+                    </h3>
+                    <p class="text-[9px] sm:text-xs text-slate-400 mt-0.5 max-w-[120px] sm:max-w-xs">O motor ativo para novos contatos diários.</p>
+                </div>
+            </div>
 
-                <div class="p-8 md:p-12 space-y-10">
-                    
-                    <div class="flex gap-4 items-start pb-6 border-b border-slate-800/60">
-                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">1</div>
-                        <div>
-                            <h4 class="text-lg font-bold text-white mb-1">PASSO 1: O Raio-X Prévio (Formulário de Inteligência)</h4>
-                            <p class="text-slate-400 text-sm">Antes do nosso encontro, você preenche um formulário exclusivo para eu mapear seu avatar, analisar seus gargalos e desenhar sua estratégia de oferta antes mesmo da nossa reunião.</p>
-                        </div>
-                    </div>
+            <!-- 3. CÍRCULO V -->
+            <div class="timeline-step flex flex-col items-center relative">
+                <div data-step="3" class="step-circle w-14 h-14 md:w-18 md:h-18 rounded-full flex items-center justify-center text-xl md:text-2xl font-black text-white shadow-lg z-20">
+                    V
+                </div>
+            </div>
 
-                    <div class="flex gap-4 items-start pb-6 border-b border-slate-800/60">
-                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">2</div>
-                        <div>
-                            <h4 class="text-lg font-bold text-white mb-1">PASSO 2: Sessão de Diagnóstico Individual (Ao Vivo no Zoom)</h4>
-                            <p class="text-slate-400 text-sm">Um encontro estratégico de 45 a 60 minutos comigo no Zoom focado em traçar o seu plano de escala completo e te dar clareza total dos seus próximos passos práticos.</p>
-                        </div>
-                    </div>
+            <!-- INTERVALO 3: ENTRE V E BAÚ DE OURO -->
+            <div class="grid grid-cols-2 gap-x-2 sm:gap-x-8 md:gap-x-16 w-full relative min-h-[120px] items-center">
+                <!-- Lado Esquerdo -->
+                <div class="reveal-item text-right pr-2 sm:pr-8 md:pr-12 flex flex-col justify-center items-end">
+                    <p class="text-slate-300 text-[11px] sm:text-xs md:text-sm max-w-[140px] sm:max-w-xs font-medium leading-relaxed">
+                        Script de vendas e atendimento humanizado para fechamento de sessões.
+                    </p>
+                </div>
+                <!-- Lado Direito -->
+                <div class="reveal-item pl-2 sm:pl-8 md:pl-12 flex flex-col justify-center items-start">
+                    <h3 class="text-sm sm:text-lg md:text-3xl font-black text-[#00B4D8] tracking-wide uppercase leading-tight">
+                        Venda
+                    </h3>
+                    <p class="text-[9px] sm:text-xs text-slate-400 mt-0.5 max-w-[120px] sm:max-w-xs">Transforme interessados em pacientes reais.</p>
+                </div>
+            </div>
 
-                    <div class="flex gap-4 items-start pb-6">
-                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">3</div>
-                        <div class="w-full">
-                            <h4 class="text-lg font-bold text-white mb-3">PASSO 3: O Kit de Execução Completo (Aulas Gravadas com Fluxo de Negócio Real)</h4>
-                            <p class="text-slate-400 text-sm mb-4">Materiais gravados complementares para você assistir e aplicar na velocidade do seu negócio:</p>
-                            
-                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-300 text-xs font-medium">
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">1.</span> Estruturação da Oferta Irrecusável de Atendimento</li>
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">2.</span> Copywriting Perfeito para Páginas de Conversão</li>
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">3.</span> Construção, Hospedagem e Template do seu Site</li>
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">4.</span> Otimização Completa de Ficha no Google Meu Negócio</li>
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">5.</span> Criação e Configuração Profissional de Conta no Google Ads</li>
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">6.</span> Subindo sua Primeira Campanha de Atração no Google Ads</li>
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">7.</span> Análise Tática e Otimização Semanal de Resultados</li>
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">8.</span> Script de Atendimento Humano para Conversão no WhatsApp</li>
-                                <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">9.</span> Roteiro de Fechamento de Contratos de Sessão</li>
-                            </ul>
-
-                            <div class="mt-6 pt-6 border-t border-slate-800 flex items-start gap-3 bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                                <span class="bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shrink-0">Bônus Extra</span>
-                                <div>
-                                    <h5 class="font-bold text-white text-sm">10. Treinamento de Métricas de Marketing: Como saber se seu investimento está valendo a pena</h5>
-                                    <p class="text-slate-400 text-xs mt-1">Vou te ensinar a ler os números do seu marketing de forma simples. Você vai descobrir exatamente quanto custa cada paciente que chega e se o dinheiro investido está trazendo lucro real para o caixa da clínica.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-8 border-t border-slate-800 text-center relative z-10">
-                        <div class="mb-6">
-                            <p class="text-xs text-slate-400 uppercase tracking-widest">Valor de Tabela da Consultoria:</p>
-                            <p class="text-2xl text-slate-500 line-through decoration-red-600 decoration-4 font-bold my-1">R$ 197,00</p>
-                            <p class="text-emerald-400 text-sm font-semibold">Toque abaixo para falar comigo e liberar sua condição de desconto:</p>
-                        </div>
+            <!-- 4. BAÚ DE OURO INTERATIVO (Com tampa que abre de verdade!) -->
+            <div class="timeline-step flex flex-col items-center relative overflow-visible">
+                <div id="bau-de-ouro" data-step="4" class="gold-circle w-18 h-18 md:w-22 md:h-22 rounded-full flex items-center justify-center shadow-2xl z-20 cursor-pointer overflow-visible">
+                    <svg class="w-12 h-12 md:w-15 md:h-15 drop-shadow-[0_4px_15px_rgba(251,191,36,0.8)]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                         
-                        <a href="https://api.whatsapp.com/send?phone=5521971193493&text=Ol%C3%A1%20Andr%C3%A9!%20Estava%20na%20p%C3%A1gina%20da%20Sess%C3%A3o%20de%20Diagn%C3%B3stico%20e%20gostaria%20de%20receber%20meu%20desconto." target="_blank" class="inline-block w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-base md:text-lg font-extrabold uppercase tracking-widest px-8 py-5 rounded-xl shadow-[0_0_40px_rgba(16,185,129,0.3)] transition-all transform hover:scale-105 mb-8">
-                            🟢 Fale agora no WhatsApp para receber seu desconto
-                        </a>
+                        <!-- Moedas de Ouro brilhando estaticamente no fundo do baú antes de abrir -->
+                        <ellipse cx="32" cy="24" rx="16" ry="5" fill="#FBBF24" />
+                        <circle cx="25" cy="23" r="3.5" fill="#D97706" />
+                        <circle cx="32" cy="21" r="4.5" fill="#FBBF24" />
+                        <circle cx="39" cy="23" r="3.5" fill="#FFE082" />
 
-                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-left flex flex-col sm:flex-row items-center gap-4">
-                            <div class="bg-white/10 text-emerald-400 rounded-full p-2.5 shrink-0">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-sm mb-0.5">Garantia Risco Zero</h4>
-                                <p class="text-slate-400 text-xs leading-relaxed">
-                                    Se ao final da nossa Sessão você sentir que não teve clareza ou que o plano tático não serve para a realidade atual do seu consultório, eu devolvo 100% do seu dinheiro na hora. Sem burocracia.
-                                </p>
-                            </div>
-                        </div>
+                        <!-- Tampa móvel do baú (Gira ao ativar a classe active) -->
+                        <g class="chest-lid">
+                            <path d="M12 24C12 15 19 11 32 11C45 11 52 15 52 24H12Z" fill="#78350F" stroke="#451A03" stroke-width="2"/>
+                            <!-- Detalhes em metal dourado na tampa -->
+                            <path d="M18 12V24" stroke="#FBBF24" stroke-width="1.5"/>
+                            <path d="M46 12V24" stroke="#FBBF24" stroke-width="1.5"/>
+                        </g>
 
-                    </div>
+                        <!-- Corpo de madeira reforçada do baú -->
+                        <path d="M8 24H56V48C56 52 52 56 48 56H16C12 56 8 52 8 48V24Z" fill="#451A03" stroke="#270F02" stroke-width="2"/>
+                        
+                        <!-- Cintas metálicas de ouro brilhante -->
+                        <rect x="14" y="24" width="6" height="32" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+                        <rect x="44" y="24" width="6" height="32" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+                        <rect x="8" y="24" width="48" height="6" fill="#D97706" stroke="#B45309" stroke-width="1"/>
+                        
+                        <!-- Fechadura de metal dourado polido -->
+                        <path d="M28 26H36V36H28V26Z" fill="#FFE082" stroke="#FBBF24" stroke-width="1"/>
+                        <circle cx="32" cy="31" r="2" fill="#1E293B"/>
+                    </svg>
+                </div>
+            </div>
 
+            <!-- INTERVALO FINAL: DETALHES DO BAÚ DE OURO -->
+            <div class="grid grid-cols-2 gap-x-2 sm:gap-x-8 md:gap-x-16 w-full relative min-h-[120px] items-center">
+                <!-- Lado Esquerdo -->
+                <div class="reveal-item text-right pr-2 sm:pr-8 md:pr-12 flex flex-col justify-center items-end">
+                    <p class="text-amber-300 text-[11px] sm:text-xs md:text-sm font-semibold max-w-[140px] sm:max-w-xs leading-relaxed">
+                        Consultório cheio, faturamento previsível e segurança financeira trabalhando de forma ética.
+                    </p>
+                </div>
+                <!-- Lado Direito -->
+                <div class="reveal-item pl-2 sm:pl-8 md:pl-12 flex flex-col justify-center items-start">
+                    <h3 class="text-sm sm:text-lg md:text-3xl font-extrabold bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-500 bg-clip-text text-transparent tracking-wide uppercase leading-tight">
+                        Baú de Ouro
+                    </h3>
+                    <p class="text-[9px] sm:text-xs text-amber-500/80 font-medium mt-0.5">O resultado prático da sua dedicação.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- FAQ SECTION -->
-    <section class="py-16 bg-slate-50 border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-8">Dúvidas Frequentes</h2>
-            <div class="space-y-4 max-w-3xl mx-auto">
-                <details class="group bg-white p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
-                    <summary class="font-bold text-base md:text-lg text-slate-900 list-none flex justify-between items-center outline-none">
-                        A sessão é em grupo ou individual?
-                        <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
-                    </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200 text-sm">100% individual. Sou eu e você focados no seu negócio. Não é aula gravada compartilhada com uma turma enorme.</p>
-                </details>
+    <!-- CALL TO ACTION (CTA) -->
+    <section class="py-24 text-center px-4 relative bg-gradient-to-t from-[#050B1A] to-[#0A122C] border-t border-slate-900">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-6 px-2">
+                Pronto para colocar o seu sistema de captação no ar?
+            </h2>
+            <p class="text-slate-300 text-sm md:text-base mb-10 max-w-xl mx-auto px-4">
+                Fale comigo diretamente no WhatsApp para analisarmos o seu caso e desenharmos o seu plano de atração de pacientes.
+            </p>
+            
+            <a href="https://wa.me/5521971193493?text=Ol%C3%A1!%20Vi%20o%20seu%20sistema%20din%C3%A2mico%20de%20marketing%20para%20Psi%20e%20Terapeutas%20e%20gostaria%20de%20entender%20como%20aplicar%20no%20meu%20consult%C3%B3rio." 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-3 px-6 py-3.5 sm:px-8 sm:py-4 bg-gradient-to-r from-[#00B4D8] to-[#0077B6] hover:from-[#00C4E8] hover:to-[#0087C6] text-white font-bold text-sm sm:text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#00B4D8]/30 hover:shadow-[#00B4D8]/50">
                 
-                <details class="group bg-white p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
-                    <summary class="font-bold text-base md:text-lg text-slate-900 list-none flex justify-between items-center outline-none">
-                        Quanto tempo dura o diagnóstico?
-                        <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
-                    </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200 text-sm">Reservamos entre 45 a 60 minutos para passar por toda a sua estrutura atual e traçar o seu plano de ação.</p>
-                </details>
-
-                <details class="group bg-white p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
-                    <summary class="font-bold text-base md:text-lg text-slate-900 list-none flex justify-between items-center outline-none">
-                        Serve para quem está começando do zero?
-                        <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
-                    </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200 text-sm">Sim. Inclusive, estruturar o posicionamento e o comercial do jeito certo desde o primeiro dia poupa meses de frustração e gastos desnecessários com palpites do mercado.</p>
-                </details>
-
-                <details class="group bg-white p-5 rounded-xl border border-slate-200 cursor-pointer transition-all">
-                    <summary class="font-bold text-base md:text-lg text-slate-900 list-none flex justify-between items-center outline-none">
-                        Preciso investir muito em anúncios agora?
-                        <span class="transition-transform group-open:rotate-180 text-emerald-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
-                    </summary>
-                    <p class="text-slate-600 mt-4 pt-4 border-t border-slate-200 text-sm">Não. Nosso primeiro passo é arrumar o seu posicionamento e script comercial. Escalar em tráfego pago é o passo seguinte, feito com inteligência e controle financeiro.</p>
-                </details>
-            </div>
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.432 2.521 1.221 3.52l-.85 3.102 3.174-.832c.954.579 2.054.886 3.18.888 3.182 0 5.769-2.587 5.77-5.768 0-3.18-2.587-5.766-5.727-5.766zm3.611 8.228c-.206.581-1.121 1.085-1.543 1.12-.419.035-.838.165-2.69-.604-2.22-.922-3.614-3.2-3.725-3.349-.111-.15-.903-1.205-.903-2.298 0-1.092.571-1.63.774-1.841.202-.211.44-.264.587-.264.147 0 .294.002.423.008.135.006.316-.051.493.376.182.441.625 1.523.679 1.634.054.109.089.237.017.382-.072.145-.108.25-.216.376-.108.125-.227.28-.324.376-.108.108-.222.227-.095.444.127.217.564.931 1.21 1.507.833.743 1.533.973 1.75.1.217-.126.463-.377.66-.633.197-.255.393-.211.663-.11.27.101 1.71.806 2.005.952.295.145.492.217.564.341.072.124.072.721-.134 1.302z"/>
+                </svg>
+                QUERO ATRAIR PACIENTES
+            </a>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-950 text-slate-500 text-xs py-8 text-center border-t border-slate-900">
-        <p>&copy; 2026 André Nunes. Todos os direitos reservados.</p>
+    <!-- RODAPÉ -->
+    <footer class="py-12 text-center text-xs text-slate-500 bg-[#050B1A] border-t border-slate-950 px-4">
+        <div class="max-w-md mx-auto space-y-2">
+            <p class="font-bold text-slate-300 text-sm">Marketing para Psi e Terapeutas</p>
+            <p class="text-slate-600">&copy; 2026. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
+    <!-- ENGINE DE INTERAÇÃO E ÁUDIO -->
+    <script>
+        let audioCtx = null;
+        let audioUnlocked = false;
+        let activatedSteps = new Set(); 
+
+        // Desbloqueio dinâmico do contexto de áudio em ambientes mobile
+        function unlockAudio() {
+            if (audioUnlocked) return;
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                
+                const buffer = audioCtx.createBuffer(1, 1, 22050);
+                const source = audioCtx.createBufferSource();
+                source.buffer = buffer;
+                source.connect(audioCtx.destination);
+                source.start(0);
+                
+                audioUnlocked = true;
+                
+                const events = ['click', 'touchstart', 'touchend', 'mousedown', 'scroll'];
+                events.forEach(e => document.removeEventListener(e, unlockAudio));
+            } catch (err) {
+                console.log("Ação do usuário necessária para áudio.", err);
+            }
+        }
+
+        const interactionEvents = ['click', 'touchstart', 'touchend', 'mousedown', 'scroll'];
+        interactionEvents.forEach(e => document.addEventListener(e, unlockAudio, { passive: true }));
+
+        // SOM 1: Feedback Tátil Suave (Passos P, A, V)
+        function playSoftTap() {
+            if (!audioCtx || !audioUnlocked) return;
+            try {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(800, now); 
+                osc.frequency.exponentialRampToValueAtTime(350, now + 0.05);
+                
+                gain.gain.setValueAtTime(0.04, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start(now);
+                osc.stop(now + 0.06);
+            } catch (e) { console.warn(e); }
+        }
+
+        // SOM DO BAÚ SE ABRINDO + QUEDA DAS MOEDAS DE OURO
+        function playChestAndCoinsSound() {
+            if (!audioCtx || !audioUnlocked) return;
+            try {
+                const now = audioCtx.currentTime;
+
+                // 1. Efeito do Baú Abrindo (Ranger de madeira antiga + Clique metálico)
+                const lidOsc = audioCtx.createOscillator();
+                const lidGain = audioCtx.createGain();
+                
+                lidOsc.type = 'sawtooth';
+                lidOsc.frequency.setValueAtTime(110, now);
+                lidOsc.frequency.linearRampToValueAtTime(190, now + 0.4); 
+                
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(450, now);
+
+                lidGain.gain.setValueAtTime(0.07, now);
+                lidGain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+                
+                lidOsc.connect(filter);
+                filter.connect(lidGain);
+                lidGain.connect(audioCtx.destination);
+                
+                lidOsc.start(now);
+                lidOsc.stop(now + 0.6);
+
+                // Clique metálico do trinco se soltando
+                const latchOsc = audioCtx.createOscillator();
+                const latchGain = audioCtx.createGain();
+                latchOsc.type = 'triangle';
+                latchOsc.frequency.setValueAtTime(950, now);
+                latchGain.gain.setValueAtTime(0.05, now);
+                latchGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+                latchOsc.connect(latchGain);
+                latchGain.connect(audioCtx.destination);
+                latchOsc.start(now);
+                latchOsc.stop(now + 0.09);
+
+                // 2. Cascata Lenta de Moedas de Ouro Tilintando (Som encorpado e rico)
+                for (let i = 0; i < 24; i++) {
+                    const delay = 0.2 + (i * 0.12); // Atraso de queda física
+                    const coinOsc = audioCtx.createOscillator();
+                    const coinGain = audioCtx.createGain();
+                    
+                    coinOsc.type = 'sine';
+                    // Tom do ouro ligeiramente mais encorpado e denso que o da prata
+                    coinOsc.frequency.setValueAtTime(1250 + Math.random() * 650, now + delay);
+                    
+                    coinGain.gain.setValueAtTime(0.015, now + delay);
+                    coinGain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.18);
+                    
+                    coinOsc.connect(coinGain);
+                    coinGain.connect(audioCtx.destination);
+                    
+                    coinOsc.start(now + delay);
+                    coinOsc.stop(now + delay + 0.2);
+                }
+            } catch (e) { console.warn(e); }
+        }
+
+        // GERADOR EXCLUSIVO DE MOEDAS DE OURO EM VELOCIDADE SUAVE
+        function spawnGoldMoneyParticles() {
+            const bau = document.getElementById('bau-de-ouro');
+            const rect = bau.getBoundingClientRect();
+            const bauCenterX = rect.left + window.scrollX + rect.width / 2;
+            const bauCenterY = rect.top + window.scrollY + rect.height / 2;
+            
+            const totalCoins = 60; 
+            
+            for (let i = 0; i < totalCoins; i++) {
+                const coin = document.createElement('div');
+                coin.className = 'gold-coin text-2xl sm:text-4xl select-none';
+                coin.textContent = '🪙'; // Emoji nativo de ouro sem filtros descolorantes
+                coin.style.position = 'absolute';
+
+                if (i < totalCoins * 0.4) {
+                    // 1. Moedas saindo voando diretamente de dentro do baú
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 90 + Math.random() * 150; 
+                    
+                    const x = Math.cos(angle) * distance;
+                    const y = Math.sin(angle) * distance + 140; 
+                    const rotation = -180 + Math.random() * 360;
+
+                    coin.style.setProperty('--x', `${x}px`);
+                    coin.style.setProperty('--y', `${y}px`);
+                    coin.style.setProperty('--r', `${rotation}deg`);
+                    
+                    coin.style.left = `${bauCenterX}px`;
+                    coin.style.top = `${bauCenterY}px`;
+                } else {
+                    // 2. Chuva de ouro caindo e cobrindo a tela do usuário por completo
+                    const screenWidth = window.innerWidth;
+                    const screenHeight = window.innerHeight;
+                    
+                    const startX = Math.random() * screenWidth + window.scrollX;
+                    const startY = window.scrollY + (Math.random() * (screenHeight * 0.45));
+                    
+                    const x = (Math.random() - 0.5) * 140; 
+                    const y = 380 + Math.random() * 260;   
+                    const rotation = -360 + Math.random() * 720;
+
+                    coin.style.setProperty('--x', `${x}px`);
+                    coin.style.setProperty('--y', `${y}px`);
+                    coin.style.setProperty('--r', `${rotation}deg`);
+                    
+                    coin.style.left = `${startX}px`;
+                    coin.style.top = `${startY}px`;
+                }
+
+                document.body.appendChild(coin);
+                
+                // Descarte das moedas após finalizarem a animação em câmera lenta (4.2s)
+                setTimeout(() => {
+                    coin.remove();
+                }, 4200);
+            }
+        }
+
+        function scrollToSystem() {
+            document.getElementById('sistema').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // MONITORAMENTO DE SCROLL E RENDERIZAÇÃO EM TEMPO REAL
+        document.addEventListener('scroll', () => {
+            const container = document.querySelector('.timeline-container');
+            const lineFill = document.querySelector('.line-fill');
+            const circles = document.querySelectorAll('.step-circle, .gold-circle');
+            const textBlocks = document.querySelectorAll('.reveal-item');
+            
+            const rect = container.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            const startOffset = rect.top - (viewportHeight * 0.45);
+            const totalHeight = rect.height;
+
+            let scrollPercent = 0;
+            if (startOffset < 0) {
+                scrollPercent = (Math.abs(startOffset) / (totalHeight - viewportHeight * 0.45)) * 100;
+                scrollPercent = Math.min(Math.max(scrollPercent, 0), 100);
+            }
+            lineFill.style.height = `${scrollPercent}%`;
+
+            circles.forEach((circle) => {
+                const stepId = circle.getAttribute('data-step');
+                const circleRect = circle.getBoundingClientRect();
+                
+                if (circleRect.top < viewportHeight * 0.62) {
+                    if (!circle.classList.contains('active')) {
+                        circle.classList.add('active');
+                        
+                        if (!activatedSteps.has(stepId)) {
+                            if (stepId === "4") {
+                                playChestAndCoinsSound();
+                                spawnGoldMoneyParticles();
+                            } else {
+                                playSoftTap();
+                            }
+                            activatedSteps.add(stepId);
+                        }
+                    }
+                } else {
+                    circle.classList.remove('active');
+                    activatedSteps.delete(stepId);
+                }
+            });
+
+            textBlocks.forEach((text) => {
+                const textRect = text.getBoundingClientRect();
+                if (textRect.top < viewportHeight * 0.72) {
+                    text.classList.add('active');
+                } else {
+                    text.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
