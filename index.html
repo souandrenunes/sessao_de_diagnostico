@@ -172,10 +172,10 @@
 
             <!-- INTERVALO 2: ENTRE A E V -->
             <div class="grid grid-cols-2 gap-x-2 sm:gap-x-8 md:gap-x-16 w-full relative min-h-[120px] items-center">
-                <!-- Lado Esquerdo -->
+                <!-- Lado Esquerdo (AJUSTE 2 - ANÚNCIOS INTENCIONAIS) -->
                 <div class="reveal-item text-right pr-2 sm:pr-8 md:pr-12 flex flex-col justify-center items-end">
                     <p class="text-slate-300 text-[11px] sm:text-xs md:text-sm max-w-[140px] sm:max-w-xs font-medium leading-relaxed">
-                        Anúncios on-line direcionados para a venda direta de consultas.
+                        Anúncios cirúrgicos para captar pessoas que <strong class="text-white">já buscam ativamente</strong> por terapia agora.
                     </p>
                 </div>
                 <!-- Lado Direito -->
@@ -183,7 +183,7 @@
                     <h3 class="text-sm sm:text-lg md:text-3xl font-black text-[#00B4D8] tracking-wide uppercase leading-tight">
                         Anúncios
                     </h3>
-                    <p class="text-[9px] sm:text-xs text-slate-400 mt-0.5 max-w-[120px] sm:max-w-xs">O motor ativo para novos contatos diários.</p>
+                    <p class="text-[9px] sm:text-xs text-slate-400 mt-0.5 max-w-[120px] sm:max-w-xs">Público qualificado com intenção real de compra.</p>
                 </div>
             </div>
 
@@ -196,22 +196,22 @@
 
             <!-- INTERVALO 3: ENTRE V E BAÚ DE OURO -->
             <div class="grid grid-cols-2 gap-x-2 sm:gap-x-8 md:gap-x-16 w-full relative min-h-[120px] items-center">
-                <!-- Lado Esquerdo -->
+                <!-- Lado Esquerdo (AJUSTE 3 - TREINAMENTO DE VENDAS) -->
                 <div class="reveal-item text-right pr-2 sm:pr-8 md:pr-12 flex flex-col justify-center items-end">
                     <p class="text-slate-300 text-[11px] sm:text-xs md:text-sm max-w-[140px] sm:max-w-xs font-medium leading-relaxed">
-                        Script de vendas e atendimento humanizado para fechamento de sessões.
+                        Você receberá um <strong class="text-[#00B4D8]">treinamento prático de vendas</strong> com scripts humanizados para fechar sessões sem parecer invasivo.
                     </p>
                 </div>
                 <!-- Lado Direito -->
                 <div class="reveal-item pl-2 sm:pl-8 md:pl-12 flex flex-col justify-center items-start">
                     <h3 class="text-sm sm:text-lg md:text-3xl font-black text-[#00B4D8] tracking-wide uppercase leading-tight">
-                        Venda
+                        Treino & Venda
                     </h3>
-                    <p class="text-[9px] sm:text-xs text-slate-400 mt-0.5 max-w-[120px] sm:max-w-xs">Transforme interessados em pacientes reais.</p>
+                    <p class="text-[9px] sm:text-xs text-slate-400 mt-0.5 max-w-[120px] sm:max-w-xs">Aprenda a fechar contratos com segurança.</p>
                 </div>
             </div>
 
-            <!-- 4. BAÚ DE OURO INTERATIVO (Com tampa que abre de verdade!) -->
+            <!-- 4. BAÚ DE OURO INTERATIVO -->
             <div class="timeline-step flex flex-col items-center relative overflow-visible">
                 <div id="bau-de-ouro" data-step="4" onclick="triggerChestManually()" class="gold-circle w-18 h-18 md:w-22 md:h-22 rounded-full flex items-center justify-center shadow-2xl z-20 cursor-pointer overflow-visible">
                     <svg class="w-12 h-12 md:w-15 md:h-15 drop-shadow-[0_4px_15px_rgba(251,191,36,0.8)]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -348,67 +348,69 @@
             } catch (e) { console.warn(e); }
         }
 
-        // SEQUÊNCIA DE SOM ATUALIZADA: Ranger de madeira -> Seguido de Moedas caindo
+        // AJUSTE 1: Ranger de madeira -> Seguido e mesclado com sons nítidos de moedas caindo
         function playChestAndCoinsSound() {
             if (!audioCtx || !audioUnlocked) return;
             try {
                 const now = audioCtx.currentTime;
 
-                // 1. Som do Ranger do Baú de Ouro se Abrindo (Começa no tempo 0 e dura 0.7 segundos)
+                // 1. Som do Ranger do Baú se Abrindo (Duração de 0.8s)
                 const lidOsc = audioCtx.createOscillator();
                 const lidGain = audioCtx.createGain();
                 
                 lidOsc.type = 'sawtooth';
                 lidOsc.frequency.setValueAtTime(95, now);
-                lidOsc.frequency.linearRampToValueAtTime(170, now + 0.5); 
+                lidOsc.frequency.linearRampToValueAtTime(160, now + 0.6); 
                 
-                const filter = audioCtx.createBiquadFilter();
-                filter.type = 'lowpass';
-                filter.frequency.setValueAtTime(380, now);
+                const filter = document.createElement('div'); // Apenas criando uma variável limpa
+                const audioFilter = audioCtx.createBiquadFilter();
+                audioFilter.type = 'lowpass';
+                audioFilter.frequency.setValueAtTime(350, now);
 
-                lidGain.gain.setValueAtTime(0.14, now);
-                lidGain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+                lidGain.gain.setValueAtTime(0.15, now);
+                lidGain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
                 
-                lidOsc.connect(filter);
-                filter.connect(lidGain);
+                lidOsc.connect(audioFilter);
+                audioFilter.connect(lidGain);
                 lidGain.connect(audioCtx.destination);
                 
                 lidOsc.start(now);
-                lidOsc.stop(now + 0.75);
+                lidOsc.stop(now + 0.85);
 
-                // Clique mecânico do trinco (Ocorre logo no início do ranger)
+                // Clique metálico do trinco do baú bem no começo
                 const latchOsc = audioCtx.createOscillator();
                 const latchGain = audioCtx.createGain();
                 latchOsc.type = 'triangle';
-                latchOsc.frequency.setValueAtTime(750, now);
-                latchGain.gain.setValueAtTime(0.08, now);
-                latchGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+                latchOsc.frequency.setValueAtTime(700, now);
+                latchGain.gain.setValueAtTime(0.1, now);
+                latchGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
                 latchOsc.connect(latchGain);
                 latchGain.connect(audioCtx.destination);
                 latchOsc.start(now);
-                latchOsc.stop(now + 0.09);
+                latchOsc.stop(now + 0.11);
 
-                // 2. Cascata de Moedas de Ouro (Começa com um delay estratégico de 0.6s, logo após o início do ranger da madeira)
-                const numMoedasSons = 30;
-                const coinStartDelay = 0.6; // Atraso para as moedas começarem a fazer barulho de verdade
+                // 2. Cascata Rítmica e Altamente Audível de Moedas de Ouro Caindo (Entra aos 0.3 segundos)
+                const numMoedasSons = 35;
+                const coinStartDelay = 0.3; // Começa a cair logo após o baú começar a abrir de fato
 
                 for (let i = 0; i < numMoedasSons; i++) {
-                    const delay = coinStartDelay + (i * 0.14); // Ritmo ritmado de queda
+                    const delay = coinStartDelay + (i * 0.12); // Ritmo fluido de cascata
                     const coinOsc = audioCtx.createOscillator();
                     const coinGain = audioCtx.createGain();
                     
                     coinOsc.type = 'sine';
-                    // Frequência rica do ouro polido caindo
-                    coinOsc.frequency.setValueAtTime(1150 + Math.random() * 550, now + delay);
+                    // Frequência muito mais cristalina e aguda para simular o tilintar de ouro físico caindo
+                    coinOsc.frequency.setValueAtTime(1800 + Math.random() * 1000, now + delay);
                     
-                    coinGain.gain.setValueAtTime(0.03, now + delay);
-                    coinGain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.25);
+                    // Volume muito mais presente e perceptível
+                    coinGain.gain.setValueAtTime(0.15, now + delay);
+                    coinGain.gain.exponentialRampToValueAtTime(0.001, now + delay + 0.35);
                     
                     coinOsc.connect(coinGain);
                     coinGain.connect(audioCtx.destination);
                     
                     coinOsc.start(now + delay);
-                    coinOsc.stop(now + delay + 0.28);
+                    coinOsc.stop(now + delay + 0.4);
                 }
             } catch (e) { console.warn(e); }
         }
